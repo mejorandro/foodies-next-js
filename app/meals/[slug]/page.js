@@ -1,15 +1,30 @@
-export default function MealDetailsPage({params}){
+import { getMeals } from '@/lib/meals';
+import classes from './page.module.css';
+import Image from 'next/image';
+
+export default function MealDetailsPage({ params }){
+
+    const meal = getMeals(params.slug);
+
     return (
         <>
-            <h1>Spicy Garlic Butter Shrimp with Fresh Herbs and Lemon Zest</h1>
-            <p>
-            Tender, juicy shrimp seared to perfection in a rich garlic butter sauce,
-             elevated with a kick of red chili flakes, a splash of lemon juice,
-              and a sprinkle of fresh parsley. This vibrant dish delivers bold flavor with every bite
-               and comes together in just 20 minutes—ideal for weeknight dinners or
-                impressive last-minute entertaining. Serve it over rice, pasta,
-                 or with crusty bread to soak up the delicious sauce.
-            </p>
+           <header className={classes.header}>
+            <div className={classes.image}>
+                <Image fill/>
+            </div>
+            <div className={classes.headerText}>
+                <h1>{meal.title}</h1>
+                <p className={classes.creator}>
+                    by <a href={`mailto:${'Email'}`}>NAME</a>
+                </p>
+                <p className={classes.summary}>SUMMARY</p>
+            </div>
+           </header>
+           <main>
+            <p className={classes.instructions} dangerouslySetInnerHTML={{
+                __html: '...',
+            }}></p>
+           </main>
         </>
     )
 }
