@@ -49,7 +49,7 @@ lib/
 
 ### 1. Clone & Install
 ```bash
-git clone <repo-url>
+git clone [<repo-url>](https://github.com/mejorandro/foodies-next-js)
 cd app
 npm install
 ```
